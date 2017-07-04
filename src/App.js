@@ -21,10 +21,14 @@ function grab(word){
   }
 
 
- class SpellBox extends React.Component{
+class SpellBox extends React.Component{
+submitGuess: Function;
+buttonGuess: Function;
   constructor(props){
     super(props);
     this.state = {score: this.props.score, guess: "", readOnly:'', placeholder: 'enter your guess here', grade: '', gradeColor: ''}
+  this.submitGuess = this.submitGuess.bind(this);
+  this.buttonGuess = this.buttonGuess.bind(this);
   }
   makeGuess(event){
   this.setState({guess: event.target.value});
@@ -33,22 +37,34 @@ submitGuess(event){
   if(event.key === 'Enter'){
     if(this.state.guess === this.props.word){
       console.log(this.state.score)
-      this.setState({readOnly: 'disable', placeholder: this.props.word, grade: '✔', gradeColor: "#B6FE77"})
+      this.setState({guess: "", readOnly: 'disable', placeholder: this.props.word, grade: '✔', gradeColor: "#B6FE77"})
       this.props.updateScore();
     }
     else{
-      this.setState({readOnly: 'disable', placeholder: this.props.word, grade: '✗', gradeColor: "#FF1150"})
+      this.setState({guess: "", readOnly: 'disable', placeholder: this.props.word, grade: '✗', gradeColor: "#FF1150"})
 
     }
     event.target.value = "";
 
   }
 }
+buttonGuess(event){
+  if(this.state.guess === this.props.word){
+      console.log(this.state.score)
+      this.setState({readOnly: 'disable', placeholder: this.props.word, grade: '✔', gradeColor: "#B6FE77", guess: ""})
+      this.props.updateScore();
+    }
+    else{
+      this.setState({readOnly: 'disable', placeholder: this.props.word, grade: '✗', gradeColor: "#FF1150", guess: ""})
+
+    }
+}
   render(){
       return <div className="spellBox">
       <h1>Word #{this.props.index} <span style={{"color": this.state.gradeColor}}>{this.state.grade}</span></h1>
       <input autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" disabled={this.state.readOnly} onKeyDown={(event) => this.submitGuess(event)} onChange={(event) => this.makeGuess(event)} placeholder={this.state.placeholder} /> <br></br>
       <Sound  audio={this.props.audio} index={this.props.index}/>
+      <button onClick={(event) => this.buttonGuess(event)} className="check">Check</button>
       </div>
   }
  }
