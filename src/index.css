@@ -1,0 +1,149 @@
+body {
+  font-family:futura, sans-serif;
+  background:#eee;
+  margin:0;
+  color:dodgerblue;
+}
+.menu, .spellBox{
+	background:#fff;
+	margin:1em;
+	background:white;
+
+}
+.menu{
+
+}
+section#userEntry.menu{
+word-wrap: break-word;
+flex-grow:5;
+
+}
+input#customWordEntry{
+	margin-top:-5em;
+	padding-top:-5em;
+}
+#app{
+	display:flex;
+	justify-content: center;
+	flex-wrap:wrap;
+	flex-direction:row;
+	margin-left:1em;
+	margin-right:1em;
+
+}
+.spellBox{
+	max-width:300px;
+	padding:2em;
+	box-shadow: 1px 1px 1px #888;
+	flex-basis:300px;
+	text-align:center;
+	border-radius:1px;
+
+}
+section#chooseFormat, #spell-Boxes{
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction: row;
+	justify-content: center;
+	user-select:none;
+}
+section#chooseFormat{
+	background:#fff;
+	box-shadow: 1px 1px 1px #888;
+	padding:2em;
+	text-align:center;
+
+}
+.menuWord{
+	padding:10px;
+	font-size:2.5em;
+	opacity:.5;
+}
+.menuWord:hover{
+	text-decoration: underline !important;
+	opacity:1 !important;
+}
+#machineButton{
+
+}
+#userButton{
+	
+}
+#heading{
+	text-align:center;
+	flex-basis:100%;
+	font-size:2em;
+}
+#menuButtons{
+	user-select:none;
+	
+}
+#plus:hover, #minus:hover{
+	cursor:pointer;
+}
+input{
+	font-size:1em;
+	font-family:avenir, sans-serif;
+	color:dodgerblue;
+	border-style:none;
+	outline:none;
+	background:#fefefe;
+}
+input:focus{
+border-bottom-style:solid;
+
+}
+button{
+	background:dodgerblue;
+	color:white;
+	border-style:none;
+	border-radius:2px;
+	font-size:1.5em;
+	font-family:avenir, century gothic;
+	padding:.5em;
+	box-shadow: 2px 2px 2px #eee;
+	transition-duration:.8s;
+	opacity:.9;
+
+}
+button:hover{
+	cursor:pointer;
+	transform: scale(1.1);
+	transition-duration: .5s;
+	opacity:1;
+}
+img.icon{
+	transition-duration: .3s;
+	opacity:.8;
+}
+img.icon:hover{
+	cursor:pointer;
+	transform:rotate(-60deg) scale(1.1);
+	transition-duration:.4s;
+	opacity:1;
+}
+#ScoreBoard{
+	text-align:center;
+	font-size:2em;
+}
+h1#heading{
+	margin-top:0;
+	margin-bottom:.2em;
+	font-size:calc(2vw + 1em);
+	transition-duration:.5s;
+}
+h1#heading:hover{
+	transform: scale(1.1);
+	transition-duration:1s;
+}
+
+@media (max-width: 650px) {
+  .menuWord {
+    font-size:1.5em;
+  }
+} 
+@media (max-width: 600px) {
+  .menuWord {
+    font-size:1.4em;
+  }
+}
