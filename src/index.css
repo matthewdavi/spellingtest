@@ -13,6 +13,10 @@ body {
 .menu{
 
 }
+a{
+	text-decoration: none;
+	color:inherit;
+}
 section#userEntry.menu{
 word-wrap: break-word;
 flex-grow:5;
@@ -146,4 +150,8 @@ h1#heading:hover{
   .menuWord {
     font-size:1.4em;
   }
+}
+button.check{
+	font-size:.8em;
+	display:inline;
 }

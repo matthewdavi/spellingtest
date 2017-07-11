@@ -1,5 +1,6 @@
 //@flow
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import audio from './audio.svg';
 import _ from 'lodash';
@@ -73,7 +74,7 @@ class UserEntry extends React.Component{
       return <section id="userEntry" onClick={this.props.whenClicked} className="menu" style={this.props.styling}>
       <input id="customWordEntry" placeholder="enter some words" onKeyDown={this.props.keydown} onChange={this.props.onChange}/> 
       <h2>to be added:</h2> <div>{this.props.wordList.toString()}</div>
-      <button onClick={this.props.customRender}>Start</button>
+      <Link to="/test"> <button onClick={this.props.customRender}>Start</button> </Link>
       </section>
   }
 
@@ -123,7 +124,7 @@ render(){
   return <div id="Hard-Words" onClick={this.props.whenClicked} className="menu">
   <section style={this.props.styling}>
   <Counter count={this.props.count} increase={this.props.increase} decrease={this.props.decrease} />
-  <button onClick={this.props.buttonRender}>Start</button>
+  <Link to="/test"> <button onClick={this.props.buttonRender}>Start</button> </Link>
 </section>
   </div>
 }
@@ -214,10 +215,11 @@ addtoList(event){
 
 render(){
   return <div>
+
   <section style={this.state.menuStyle} id="chooseFormat">
     <div id="menuButtons">
-  <span id="machineButton" onClick={(event) => this.clickHardWords(event)} className="menuWord" style={this.state.hardHeading} >SAT words</span>
-  <span id="userButton" onClick ={(event) => this.clickUserWords(event)} className="menuWord" style={this.state.customHeading} >Custom</span>
+ <Link to="/sat"> <span id="machineButton" onClick={(event) => this.clickHardWords(event)} className="menuWord" style={this.state.hardHeading} >SAT words</span> </Link>
+  <Link to="/custom"> <span id="userButton" onClick ={(event) => this.clickUserWords(event)} className="menuWord" style={this.state.customHeading} >Custom</span> </Link>
     </div>
   <HardWordsMenu increase={(event) => this.increaseCount(event)} decrease={(event) => this.decreaseCount(event)} count={this.state.count} styling={this.state.hardWordsDisplay} buttonRender={(event) => this.hardWordsRender(event)} />
   <UserEntry heading={this.state.customHeading} whenClicked={(event) => this.clickUserWords(event)} styling={this.state.userWordsDisplay} customRender={(event) => this.customRender(event)} onChange={(event) => this.addWord(event)}userWords={this.state.entryList} keydown={(event) => this.handleUserPress(event)} wordList={this.state.wordList}/>
@@ -232,10 +234,12 @@ render(){
 }
 class App extends Component {
   render() {
-    return <div id="app">
+    return <Router>
+    <div id="app">
     <h1 id="heading">{`<SpellingTest/>`}</h1>
     <Selection/>
     </div>
+    </Router>
   }
 }
 
